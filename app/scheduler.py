@@ -12,15 +12,15 @@ scheduler = BackgroundScheduler()
 
 
 def start_scheduler():
-    scheduler.add_job(
-        run_ingest_cycle,
-        "interval",
-        minutes=settings.INGEST_INTERVAL_MINUTES,
-        next_run_time=datetime.now()
-        id="ingest_cycle",
-        replace_existing=True,
-        max_instances=1,       
-        coalesce=True,         
-        misfire_grace_time=120,
-    )
-    scheduler.start()
+scheduler.add_job(
+run_ingest_cycle,
+"interval",
+minutes=settings.INGEST_INTERVAL_MINUTES,
+next_run_time=datetime.now(),
+id="ingest_cycle",
+replace_existing=True,
+max_instances=1,
+coalesce=True,
+misfire_grace_time=120,
+)
+scheduler.start()
